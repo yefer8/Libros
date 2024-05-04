@@ -9,8 +9,10 @@ class Biblioteca:
         self.libros = []
 
     def agregar_libro(self, libro):
-        if not libro.titulo or not libro.autor:
-            raise ValueError("El libro debe tener un título y un autor.")
+        if not libro.titulo:
+            raise ValueError("El libro debe tener un título.")
+        if not libro.autor:
+            raise ValueError("El libro debe tener un autor.")
         self.libros.append(libro)
         print(f"Libro '{libro.titulo}' agregado a la biblioteca.")
 
@@ -28,18 +30,6 @@ class Biblioteca:
             for libro in self.libros:
                 print(f"- {libro.titulo} (Autor: {libro.autor}, Año: {libro.año_publicacion})")
 
-
-class ErrorLibroSinTitulo(Exception):
-    def __init__(self, mensaje="El libro debe tener un título."):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
-
-class ErrorLibroSinAutor(Exception):
-    def __init__(self, mensaje="El libro debe tener un autor."):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
-
-
 def main():
     biblioteca = Biblioteca()
 
@@ -53,22 +43,13 @@ def main():
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
+            titulo = input("Ingrese el título del libro: ")
+            autor = input("Ingrese el autor del libro: ")
+            año_publicacion = input("Ingrese el año de publicación del libro: ")
+
             try:
-                titulo = input("Ingrese el título del libro: ")
-                autor = input("Ingrese el autor del libro: ")
-                año_publicacion = input("Ingrese el año de publicación del libro: ")
-
-                if not titulo:
-                    raise ErrorLibroSinTitulo
-                if not autor:
-                    raise ErrorLibroSinAutor
-
                 libro = Libro(titulo, autor, año_publicacion)
                 biblioteca.agregar_libro(libro)
-            except ErrorLibroSinTitulo as e:
-                print(e)
-            except ErrorLibroSinAutor as e:
-                print(e)
             except ValueError as e:
                 print(e)
 
