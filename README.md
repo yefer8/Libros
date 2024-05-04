@@ -1,6 +1,13 @@
 # FUNCIONALIDAD DE CADA METODO
- El método agregar_libro añade un libro a la biblioteca, verificando que tenga título y autor.
-buscar_libro busca un libro por título y lo devuelve si lo encuentra, o lanza una excepción si no está en la biblioteca. 
-mostrar_libros imprime todos los libros de la biblioteca si existen. 
-La excepción ErrorLibroSinTitulo se lanza si se intenta agregar un libro sin título.
-ErrorLibroSinAutor si se intenta agregar un libro sin autor. El programa principal ofrece un menú para ejecutar estas opciones.
+
+ __init__ en Libro: Inicializa un objeto de la clase Libro con un título, autor y año de publicación.
+ 
+__init__ en Biblioteca: Inicializa un objeto de la clase Biblioteca con una lista vacía de libros.
+
+agregar_libro: Agrega un libro a la biblioteca. Lanza una excepción si el libro no tiene título o autor.
+
+buscar_libro: Busca un libro en la biblioteca por su título. Lanza una excepción si el libro no se encuentra.
+
+mostrar_libros: Muestra todos los libros en la biblioteca. Imprime un mensaje si la biblioteca está vacía.
+
+main: Ejecuta el menú principal del programa, permitiendo al usuario interactuar con la biblioteca.
